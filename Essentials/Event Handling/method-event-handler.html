@@ -5,27 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computed</title>
+    <title>Method Event Handler</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 </head>
 
 <body>
     <div id="app">
-        <p>{{message}}</p>
-        <p>{{reversedMessage}}</p>
+        <button v-on:click="greet">Greet</button>
     </div>
     <script>
-        var vm = new Vue({
+        var app = new Vue({
             el: '#app',
             data: {
-                message: 'Hello world'
+                name: 'Vue.js'
             },
             methods: {
-
-            },
-            computed: {
-                reversedMessage: function () {
-                    return this.message.split(' ').reverse().join(' ')
+                greet(event) {
+                    alert('Hello ' + this.name + '!')
+                    if (event) {
+                        alert(event.target.tagName)
+                    }
                 }
             }
         })
